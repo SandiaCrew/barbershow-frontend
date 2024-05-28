@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ScanQRPage from './pages/ScanQRPage';
 import SettingsPage from './pages/SettingsPage';
+import ClientsPage from './pages/ClientsPage';
 import './App.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/scan-qr" element={<ScanQRPage />} />
           <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/clients" element={<ClientsPage />} />
         </Routes>
       </div>
     </Router>
