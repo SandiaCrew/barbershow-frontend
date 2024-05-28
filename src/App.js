@@ -1,16 +1,15 @@
 // src/App.js
 import React from 'react';
-import HomeNavbar from './components/HomeNavbar';
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <HomeNavbar />
-      <div className="content">
-        {/* Main content will go here */}
-      </div>
+      <Navbar />
+      <HomePage />
       <Footer />
     </div>
   );
