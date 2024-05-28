@@ -1,11 +1,16 @@
 // src/pages/HomePage.js
 import React from 'react';
+import HomeNavbar from '../components/HomeNavbar';
 
 const HomePage = () => (
-  <main>
-    <h1>Welcome to Barber Show</h1>
-    <p>This is the main dashboard. Here you can manage your appointments, scan QR codes, and more.</p>
-  </main>
+  <div className="main">
+    <div className="container container--home">
+      <div className="logo">
+        <img src="assets/Braber Show Logo.png" alt="Logo" />
+      </div>
+      <HomeNavbar />
+    </div>
+  </div>
 );
 
 export default HomePage;
