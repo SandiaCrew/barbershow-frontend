@@ -12,7 +12,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/scan-qr" element={<ScanQRPage />} />
