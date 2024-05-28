@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import ScanQRPage from './pages/ScanQRPage';
+import SettingsPage from './pages/SettingsPage';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/scan-qr" element={<ScanQRPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
         </Routes>
         <Footer />
       </div>
