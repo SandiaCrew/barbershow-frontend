@@ -14,11 +14,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-<<<<<<< HEAD
-          {/* Placeholder for other routes */}
-=======
           <Route path="/scan-qr" element={<ScanQRPage />} />
->>>>>>> 798d8e2 (Integrate ScanQRPage into App component)
         </Routes>
         <Footer />
       </div>
