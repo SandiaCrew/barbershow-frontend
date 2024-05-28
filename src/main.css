@@ -1,0 +1,483 @@
+/* CSS reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select,
+label,
+::placeholder {
+  font-family: 'Montserrat'!important;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  font-family: 'Montserrat';
+}
+#root,
+#__next {
+  isolation: isolate;
+}
+a {
+  font-family: 'Montserrat';
+  text-decoration: none;
+}
+
+/* Global styles */
+.main {
+  background-color: black;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+h1 {
+  font-family: "Montserrat";
+  color: #b87333;
+}
+
+.container {
+  width: 100%;
+  min-height: 70%;
+  height: 100%;
+  display: flex;
+}
+.container--home {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.container--page {
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+}
+.container-body {
+  padding: 5%;
+  flex-direction: column;
+}
+
+.logo {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px;
+}
+
+.main-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.main-links--navbar {
+  display: flex;
+  width: 100%;
+  padding: 0 10px;
+  background-color: #3b3b3b;
+  padding: 10px;
+  min-height: 35px;
+}
+
+.link-button {
+  text-align: center;
+  font-size: 0.8rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 3px;
+  width: 100%;
+  background-color: #556b2f; /* Olive Green for buttons */
+  color: #ffffff;
+  font-family: "Montserrat";
+}
+
+.link-button:hover {
+  background-color: #6b8e23; /* Slightly lighter olive green for hover effect */
+}
+.link-button--home {
+  display: inline-block;
+  padding: 20px 12px;
+}
+
+.link-button--navbar {
+  background-color: #556b2f; /* Olive Green for buttons */
+  color: #ffffff;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bx {
+  font-size: 2rem;
+}
+
+.page-title {
+  text-align: center;
+  margin: 0 0 30px 0;
+}
+
+/* All clients styles */
+.client-list {
+  list-style: none; /* Remove default bullets */
+  padding: 0;
+  margin: 0;
+  width: 100%; /* Full width */
+  border: 1px solid #3b3b3b;
+  border-radius: 3px;
+}
+.client-list__item {
+  list-style: none;
+  padding: 15px;
+  border-bottom: 1px solid #3b3b3b;
+  margin-left: 0;
+  background-color: #3b3b3b;
+  cursor: pointer; /* Make it look clickable */
+  transition: background-color 0.3s;
+}
+.client-list__item:nth-child(2n) {
+  background-color: #444444; /* Slightly different color for odd rows */
+}
+.client--link {
+  display: block;
+  text-decoration: none;
+  color: white;
+  width: 100%;
+  height: 100%;
+}
+.client-list__item:hover {
+  background-color: #555555;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 600px;
+  padding: 10px 20px;
+  margin: 20px auto;
+  border: 1px solid #556B2F; /* Olive Green border */
+  border-radius: 5px;
+  background-color: #333333; /* Dark Olive background */
+  color: #FFFFFF; /* White text */
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.search-bar::placeholder {
+  color: #B0B0B0; /* Light grey placeholder color */
+  font-family: 'boxicons'; /* Use boxicons font for the icon */
+}
+
+/* Scanner styles */
+.qr-code-scanner {
+  border: 1px solid white;
+  width: 100%;
+  padding: 5px;
+}
+
+/* Add client styles */
+.client-form {
+  max-width: 600px;
+  padding: 15px;
+  border-radius: 3px;
+  background-color: #333333; /* Dark Olive background */
+}
+
+.client-form label {
+  display: block;
+  margin-bottom: 5px;
+  color: #FFFFFF;
+  font-size: 0.8rem;
+}
+
+.client-form .form-input {
+  width: 100%; /* Full width minus padding */
+  padding: 10px;
+  margin-bottom: 25px;
+  border: 1px solid #556B2F;
+  border-radius: 2px;
+  background-color: #444444; /* Slightly lighter background for inputs */
+  color: #FFFFFF;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+.client-form .iti--allow-dropdown input,
+.client-form .iti {
+  width: 100%; /* Ensure full width for phone input */
+}
+
+.client-form .form-button {
+  background-color: #556B2F; /* Olive Green for buttons */
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 45px;
+}
+
+.client-form .form-button:hover {
+  opacity: 0.8; /* Slightly lighter olive green for hover effect */
+}
+
+/* Settings styles */
+.rewards-settings h3 {
+  color: white;
+  margin: 30px 0;
+}
+.reward-form {
+  max-width: 600px;
+  padding: 15px;
+  border-radius: 3px;
+  background-color: #333333; /* Dark Olive background */
+}
+
+.reward-form label {
+  display: block;
+  margin-bottom: 5px;
+  color: #FFFFFF;
+  font-size: 0.8rem;
+}
+
+.reward-form .form-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.reward-form .reward-form-input {
+  padding: 10px;
+  border: 1px solid #556B2F;
+  border-radius: 2px;
+  background-color: #444444; /* Slightly lighter background for inputs */
+  color: #FFFFFF;
+  font-size: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.reward-form .form-input.number-input {
+  width: 25%; /* Number field width */
+}
+
+.reward-form .form-input.reward-input {
+  width: 75%; /* Text field width */
+}
+
+.reward-form .form-button {
+  background-color: #556B2F; /* Olive Green for buttons */
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 25px;
+}
+
+.reward-form .form-button:hover {
+  opacity: 0.8; /* Slightly lighter olive green for hover effect */
+}
+
+/* Active rewards list styles */
+.active-rewards-list {
+  font-family: 'Montserrat';
+  border: 1px solid #3b3b3b;
+  border-radius: 3px;
+  padding: 0;
+  list-style: none; /* Remove default bullets */
+  width: 100%; /* Full width */
+  max-width: 600px; /* Maximum width for the list */
+  margin: auto; /* Center align */
+}
+
+.active-rewards-list-item {
+  list-style: none;
+  padding: 15px;
+  border-bottom: 1px solid #3b3b3b;
+  margin-left: 0;
+  background-color: #3b3b3b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer; /* Make it look clickable */
+  transition: background-color 0.3s;
+  color: #FFFFFF;
+}
+.active-rewards-list-item:nth-child(2n) {
+  background-color: #444444; /* Slightly different color for odd rows */
+}
+
+.rewards-list-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.rewards-list-visits-number {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.rewards-list-buttons button {
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0;
+  border-radius: 5px;
+}
+
+.rewards-list-buttons .edit {
+  background-color: #007BFF; /* Blue for edit button */
+  color: #FFFFFF;
+}
+
+.rewards-list-buttons .delete {
+  background-color: #DC3545; /* Red for delete button */
+  color: #FFFFFF;
+}
+
+.rewards-list-buttons i {
+  color: #FFFFFF;
+  font-size: 1.2rem;
+  padding: 12px;
+  border-radius: 5px;
+}
+
+.rewards-list-buttons button:hover {
+  opacity: 0.8; /* Slight transparency on hover */
+}
+
+/* Client details styles */
+.client-details {
+  background-color: #333333;
+  padding: 20px;
+  border-radius: 3px;
+}
+.client-detail {
+  color: white;
+  padding: 15px 0;
+  border-bottom: 1px solid #3b3b3b;
+}
+.client-detail span {
+  text-transform: uppercase;
+}
+
+.client-buttons {
+  margin-top: 25px;
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+.client-buttons button:hover {
+  opacity: 0.8;
+}
+
+.client-buttons button {
+  width: 50%;
+  padding: 12px;
+  border-radius: 3px;
+  color: white;
+  text-transform: uppercase;
+  outline: none;
+  border: none;
+}
+.edit-client {
+  background-color: #007BFF;
+}
+.delete-client {
+  background-color: #DC3545;
+}
+.client-qr {
+  margin: 30px 0;
+}
+.whatsapp {
+  margin-top: 15px;
+  width: 100%;
+  color: white;
+  border: none;
+  outline: none;
+  background-color: #075E54;
+  text-transform: uppercase;
+  padding: 12px;
+}
+.whatsapp:hover {
+  opacity: 0.8;
+}
+
+.visits {
+  color: white;
+  font-family: 'Montserrat';
+  border: 1px solid #3b3b3b;
+  margin-top: 15px;
+  border-radius: 3px;
+  padding: 15px;
+}
+
+.visits h3 {
+  margin-bottom: 10px;
+}
+.visits span {
+  display: block;
+}
+.total-visits {
+  text-align: center;
+}
+.total-visits span {
+  font-size: 3rem;
+}
+
+.notice {
+  padding: 15px;
+  text-align: center;
+  margin: 15px 0;
+  border-radius: 3px;
+}
+
+.notice--active {
+  border: 1px solid #6B8E23;
+  color: #6B8E23;
+}
+
+ul.visit-list {
+  border: 1px solid #3b3b3b;
+  border-radius: 3px;
+  padding: 0;
+}
+li.visit-list-item {
+  list-style: none;
+  padding: 15px;
+  border-bottom: 1px solid #3b3b3b;
+  margin-left: 0;
+  background-color: #3b3b3b;
+}
+li.visit-list-item:nth-child(2n) {
+  background-color: #444444;
+}

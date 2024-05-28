@@ -8,6 +8,7 @@ import ClientsPage from './pages/ClientsPage';
 import NewClientPage from './pages/NewClientPage';
 import ClientPage from './pages/ClientPage';
 import './App.css';
+import './main.css'; // Add this line to import your CSS file
 
 function App() {
   return (
