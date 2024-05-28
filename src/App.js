@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import ScanQRPage from './pages/ScanQRPage';
 import SettingsPage from './pages/SettingsPage';
 import ClientsPage from './pages/ClientsPage';
+import NewClientPage from './pages/NewClientPage';
 import './App.css';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/scan-qr" element={<ScanQRPage />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/clients" element={<ClientsPage />} />
+          <Route path="/clients/new-client" element={<NewClientPage />} />
         </Routes>
       </div>
     </Router>
