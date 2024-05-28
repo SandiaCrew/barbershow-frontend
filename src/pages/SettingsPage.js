@@ -7,6 +7,7 @@ import RewardsList from '../components/RewardsList';
 const SettingsPage = () => (
   <div className="main">
     <div className="container container--page">
+    <Navbar />
       <div className="container container-body">
         <h1 className="page-title">Settings</h1>
         <div className="rewards-settings">
