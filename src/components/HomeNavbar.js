@@ -1,12 +1,12 @@
-// src/components/HomeNavbar.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const HomeNavbar = () => (
   <nav className="main-links main-links--home">
-    <a className="link-button link-button--home" href="/scan-qr">Scan QR</a>
-    <a className="link-button link-button--home" href="/clients/new-client">Add new client</a>
-    <a className="link-button link-button--home" href="/clients">Clients</a>
-    <a className="link-button link-button--home" href="/settings">Settings</a>
+    <Link className="link-button link-button--home" to="/scan-qr">Scan QR</Link>
+    <Link className="link-button link-button--home" to="/clients/new-client">Add new client</Link>
+    <Link className="link-button link-button--home" to="/clients">Clients</Link>
+    <Link className="link-button link-button--home" to="/settings">Settings</Link>
   </nav>
 );
 
