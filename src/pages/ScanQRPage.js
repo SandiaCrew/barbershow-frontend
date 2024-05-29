@@ -1,4 +1,3 @@
-// src/pages/ScanQRPage.js
 import React from 'react';
 import Navbar from '../components/Navbar';
 import QRScanner from '../components/QRScanner';
