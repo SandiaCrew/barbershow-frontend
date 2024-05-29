@@ -1,4 +1,3 @@
-// src/pages/ClientsPage.js
 import React from 'react';
 import Navbar from '../components/Navbar';
 import SearchBar from '../components/SearchBar';
