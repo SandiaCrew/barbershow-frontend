@@ -1,21 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from '../axios';
+import 'intl-tel-input/build/css/intlTelInput.css';
+import intlTelInput from 'intl-tel-input';
 import 'react-phone-input-2/lib/style.css';
-import PhoneInput from 'react-phone-input-2';
 
 const ClientForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const phoneInputRef = useRef(null);
+
+  useEffect(() => {
+    if (phoneInputRef.current) {
+      intlTelInput(phoneInputRef.current, {
+        initialCountry: 'es',
+        utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js',
+      });
+    }
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('/clients', { name, email, phone });
+      const response = await axios.post('/clients', {
+        name,
+        email,
+        phone: phoneInputRef.current.value,
+      });
       console.log('Client added:', response.data);
       setName('');
       setEmail('');
-      setPhone('');
+      phoneInputRef.current.value = '';
     } catch (error) {
       console.error('Error adding client:', error);
     }
@@ -49,12 +63,12 @@ const ClientForm = () => {
         />
 
         <label htmlFor="phone">Phone Number</label>
-        <PhoneInput
-          country={'es'}
-          value={phone}
-          onChange={(phone) => setPhone(phone)}
-          inputClass="form-input"
-          containerClass="intl-tel-input"
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          className="form-input"
+          ref={phoneInputRef}
           required
         />
 
