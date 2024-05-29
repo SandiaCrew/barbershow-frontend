@@ -1,16 +1,39 @@
-// src/components/QRScanner.js
-import React from 'react';
+import React, { useState } from 'react';
+import CustomQRReader from './CustomQRReader';
+import axios from '../axios';
+import '../main.css'; // Ensure main.css is imported
 
-const QRScanner = () => (
-  <div className="qr-code-scanner">
-    {/* QR code scanner functionality will be implemented here */}
-    {/* Scanner needs to activate the phone's back camera, NOT THE FRONT. */}
-    {/* Once the QR code is scanned, it logs the client's visit to the barber shop as a date (time not needed, only date). */}
-    {/* That visit is logged into the database with that client. */}
-    {/* Visits serve for the Loyalty program, to track how many visits the client had. */}
-    {/* They will all be shown on their page. */}
-    <p>QR code scanner functionality will be here</p>
-  </div>
-);
+const QRScanner = () => {
+  const [scannedData, setScannedData] = useState('');
+
+  const handleScan = async (data) => {
+    if (data) {
+      setScannedData(data.text);
+      try {
+        await axios.post('/visits', { clientId: data.text, date: new Date().toISOString().split('T')[0] });
+        alert('Visit logged successfully');
+      } catch (error) {
+        console.error('Error logging visit:', error);
+      }
+    }
+  };
+
+  const handleError = (error) => {
+    console.error('QR Scanner Error:', error);
+  };
+
+  return (
+    <div className="qr-code-scanner">
+      <CustomQRReader
+        delay={300}
+        onError={handleError}
+        onScan={handleScan}
+        style={{ height: 240, width: 320 }}
+        constraints={{ video: { facingMode: 'environment' } }} // Ensure video is requested and back camera is used
+      />
+      <p>{scannedData ? `Scanned data: ${scannedData}` : 'Scan a QR code to log a visit'}</p>
+    </div>
+  );
+};
 
 export default QRScanner;
