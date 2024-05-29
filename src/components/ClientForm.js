@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from '../axios';
+import 'react-phone-input-2/lib/style.css';
+import PhoneInput from 'react-phone-input-2';
 
 const ClientForm = () => {
   const [name, setName] = useState('');
@@ -47,14 +49,12 @@ const ClientForm = () => {
         />
 
         <label htmlFor="phone">Phone Number</label>
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          className="form-input"
-          placeholder="Enter client's phone number"
+        <PhoneInput
+          country={'es'}
           value={phone}
-          onChange={(e) => setPhone(e.target.value)}
+          onChange={(phone) => setPhone(phone)}
+          inputClass="form-input"
+          containerClass="intl-tel-input"
           required
         />
 
