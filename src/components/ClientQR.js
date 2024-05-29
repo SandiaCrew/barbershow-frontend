@@ -1,5 +1,5 @@
 import React from 'react';
-import { QRCode } from 'qrcode.react';
+import { QRCodeCanvas } from 'qrcode.react';
 import '../main.css'; // Ensure main.css is imported
 
 const ClientQR = ({ clientId }) => {
@@ -12,7 +12,7 @@ const ClientQR = ({ clientId }) => {
 
   return (
     <div className="client-qr">
-      <QRCode value={qrValue} size={256} />
+      <QRCodeCanvas value={qrValue} size={256} />
       <button className="whatsapp" onClick={handleWhatsAppShare}>
         Send QR via WhatsApp
       </button>
