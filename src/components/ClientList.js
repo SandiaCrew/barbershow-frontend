@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../axios';
+import { Link } from 'react-router-dom';
 
 const ClientList = () => {
   const [clients, setClients] = useState([]);
@@ -21,7 +22,7 @@ const ClientList = () => {
     <ul className="client-list">
       {clients.map(client => (
         <li key={client._id} className="client-list__item">
-          <a href={`client.html?id=${client._id}`} className="client--link">{client.name}</a>
+          <Link to={`/clients/${client._id}`} className="client--link">{client.name}</Link>
         </li>
       ))}
     </ul>
