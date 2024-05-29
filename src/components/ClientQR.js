@@ -9,7 +9,8 @@ const ClientQR = ({ clientId, clientPhone }) => {
   const handleWhatsAppShare = async () => {
     try {
       const dataUrl = await toPng(qrRef.current);
-      const whatsappUrl = `https://wa.me/${clientPhone}?text=Scan this QR code to view client details: ${dataUrl}`;
+      console.log(`WhatsApp number: ${clientPhone}`); // Log the phone number
+      const whatsappUrl = `https://wa.me/${clientPhone}?text=${encodeURIComponent('Scan this QR code to view client details: ' + dataUrl)}`;
       window.open(whatsappUrl, '_blank');
     } catch (error) {
       console.error('Error generating QR code image:', error);
@@ -19,7 +20,7 @@ const ClientQR = ({ clientId, clientPhone }) => {
   return (
     <div className="client-qr">
       <div ref={qrRef}>
-        <QRCodeCanvas value={clientId} size={256} />
+        <QRCodeCanvas value={`https://yourapp.com/client/${clientId}`} size={256} />
       </div>
       <button className="whatsapp" onClick={handleWhatsAppShare}>
         Send QR via WhatsApp
