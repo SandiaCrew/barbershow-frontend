@@ -1,15 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from '../axios';
 import 'intl-tel-input/build/css/intlTelInput.css';
 import intlTelInput from 'intl-tel-input';
-import 'react-phone-input-2/lib/style.css';
+import { useNavigate } from 'react-router-dom';
+import '../main.css'; // Ensure main.css is imported
 
 const ClientForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const phoneInputRef = useRef(null);
+  const navigate = useNavigate();
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (phoneInputRef.current) {
       intlTelInput(phoneInputRef.current, {
         initialCountry: 'es',
@@ -27,9 +29,7 @@ const ClientForm = () => {
         phone: phoneInputRef.current.value,
       });
       console.log('Client added:', response.data);
-      setName('');
-      setEmail('');
-      phoneInputRef.current.value = '';
+      navigate(`/clients/${response.data._id}`);
     } catch (error) {
       console.error('Error adding client:', error);
     }
