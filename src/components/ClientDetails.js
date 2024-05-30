@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from '../axios';
+import '../main.css'; // Ensure main.css is imported
 
 const ClientDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [client, setClient] = useState(null);
 
   useEffect(() => {
@@ -19,6 +21,19 @@ const ClientDetails = () => {
     fetchClient();
   }, [id]);
 
+  const handleEdit = () => {
+    navigate(`/clients/${id}/edit`);
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`/clients/${id}`);
+      navigate('/clients');
+    } catch (error) {
+      console.error('Error deleting client:', error);
+    }
+  };
+
   if (!client) {
     return <div>Loading...</div>;
   }
@@ -29,8 +44,8 @@ const ClientDetails = () => {
       <p className="client-detail">Email: {client.email}</p>
       <p className="client-detail">Phone: {client.phone}</p>
       <div className="client-buttons">
-        <button className="edit-client">Edit</button>
-        <button className="delete-client">Delete</button>
+        <button className="edit-client" onClick={handleEdit}>Edit</button>
+        <button className="delete-client" onClick={handleDelete}>Delete</button>
       </div>
     </div>
   );
