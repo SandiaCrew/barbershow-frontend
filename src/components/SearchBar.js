@@ -1,8 +1,13 @@
-// src/components/SearchBar.js
 import React from 'react';
 
-const SearchBar = () => (
-  <input type="text" className="search-bar" placeholder="Search..." />
+const SearchBar = ({ searchTerm, handleSearch }) => (
+  <input
+    type="text"
+    className="search-bar"
+    placeholder="Search..."
+    value={searchTerm}
+    onChange={handleSearch}
+  />
 );
 
 export default SearchBar;

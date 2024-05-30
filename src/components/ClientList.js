@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const ClientList = () => {
   const [clients, setClients] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchClients = async () => {
@@ -18,14 +19,35 @@ const ClientList = () => {
     fetchClients();
   }, []);
 
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredClients = clients.filter(client =>
+    client.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    client.email.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <ul className="client-list">
-      {clients.map(client => (
-        <li key={client._id} className="client-list__item">
-          <Link to={`/clients/${client._id}`} className="client--link">{client.name}</Link>
-        </li>
-      ))}
-    </ul>
+    <div>
+      <input
+        type="text"
+        placeholder="Search clients..."
+        value={searchTerm}
+        onChange={handleSearch}
+      />
+      <ul className="client-list">
+        {filteredClients.length > 0 ? (
+          filteredClients.map(client => (
+            <li key={client._id} className="client-list__item">
+              <Link to={`/clients/${client._id}`} className="client--link">{client.name}</Link>
+            </li>
+          ))
+        ) : (
+          <li>No clients found</li>
+        )}
+      </ul>
+    </div>
   );
 };
 
