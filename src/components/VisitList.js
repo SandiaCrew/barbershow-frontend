@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../axios';
 import '../main.css'; // Ensure main.css is imported
 
 const VisitList = ({ clientId }) => {
@@ -15,7 +15,9 @@ const VisitList = ({ clientId }) => {
       }
     };
 
-    fetchVisits();
+    if (clientId) {
+      fetchVisits();
+    }
   }, [clientId]);
 
   return (

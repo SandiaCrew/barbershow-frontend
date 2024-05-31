@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from '../axios';
+import VisitList from '../components/VisitList'; // Import VisitList
 import '../main.css'; // Ensure main.css is imported
 
 const ClientDetails = () => {
@@ -47,6 +48,7 @@ const ClientDetails = () => {
         <button className="edit-client" onClick={handleEdit}>Edit</button>
         <button className="delete-client" onClick={handleDelete}>Delete</button>
       </div>
+      <VisitList clientId={id} /> {/* Pass clientId to VisitList */}
     </div>
   );
 };
