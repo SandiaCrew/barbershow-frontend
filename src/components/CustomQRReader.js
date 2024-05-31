@@ -1,7 +1,13 @@
 import React from 'react';
 import QrScanner from 'react-qr-scanner';
+import { compose } from 'redux';
 
-const CustomQRReader = ({ delay = 300, onError, onScan, style = { height: 240, width: 320 }, constraints = { video: { facingMode: 'environment' } } }) => {
+// Higher-Order Component to handle default props
+const withDefaults = (defaultProps) => (Component) => (props) => {
+  return <Component {...defaultProps} {...props} />;
+};
+
+const CustomQRReader = ({ delay, onError, onScan, style, constraints }) => {
   return (
     <QrScanner
       delay={delay}
@@ -13,4 +19,12 @@ const CustomQRReader = ({ delay = 300, onError, onScan, style = { height: 240, w
   );
 };
 
-export default CustomQRReader;
+const EnhancedCustomQRReader = compose(
+  withDefaults({
+    delay: 300,
+    style: { height: 240, width: 320 },
+    constraints: { video: { facingMode: 'environment' } },
+  })
+)(CustomQRReader);
+
+export default EnhancedCustomQRReader;
