@@ -1,28 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from '../axios';
 import '../main.css';
 
 const VisitList = ({ clientId }) => {
   const [visits, setVisits] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchVisits = useCallback(async () => {
+    if (!clientId) {
+      console.error('Client ID is undefined in fetchVisits:', clientId);
+      return;
+    }
+
+    console.log("Client ID in VisitList:", clientId);
+
+    try {
+      console.log("Fetching visits for Client ID:", clientId);
+      const response = await axios.get(`/clients/${clientId}/visits`);
+      setVisits(response.data);
+    } catch (error) {
+      console.error('Error fetching visits:', error);
+    } finally {
+      setLoading(false);
+    }
+  }, [clientId]);
 
   useEffect(() => {
-    console.log("Client ID in VisitList:", clientId);
-    const fetchVisits = async () => {
-      if (!clientId) {
-        console.error('Client ID is undefined');
-        return;
-      }
-      try {
-        console.log("Fetching visits for Client ID:", clientId);
-        const response = await axios.get(`/clients/${clientId}/visits`); // Adjusted URL
-        setVisits(response.data);
-      } catch (error) {
-        console.error('Error fetching visits:', error);
-      }
-    };
+    if (clientId) {
+      fetchVisits();
+    }
+  }, [clientId, fetchVisits]);
 
-    fetchVisits();
-  }, [clientId]);
+  if (!clientId) {
+    return <div>Loading visits...</div>;
+  }
+
+  if (loading) {
+    return <div>Loading visits...</div>;
+  }
 
   return (
     <div className="visits">
@@ -31,7 +46,6 @@ const VisitList = ({ clientId }) => {
       {visits.length > 0 && (
         <span className="notice notice--active">There are rewards to be collected!</span>
       )}
-      <h3>Times visited</h3>
       <ul className="visit-list">
         {visits.map((visit, index) => (
           <li key={index} className="visit-list-item">
