@@ -41,7 +41,7 @@ const ClientQR = ({ clientId, clientPhone }) => {
     <div className="client-qr" ref={qrRef}>
       <QRCode value={`https://yourapp.com/client/${clientId}`} size={512} />
       <button className="whatsapp" onClick={handleWhatsAppShare}>
-        Send QR via WhatsApp
+        Send QR
       </button>
     </div>
   );
