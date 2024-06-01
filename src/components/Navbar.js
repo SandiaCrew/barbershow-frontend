@@ -27,11 +27,11 @@ const Navbar = () => {
           <i className='bx bx-qr-scan'></i>
         </Link>
       )}
-      {currentPath !== '/settings' && (
+      {/* {currentPath !== '/settings' && (
         <Link className="link-button link-button--navbar" to="/settings">
           <i className='bx bx-cog'></i>
         </Link>
-      )}
+      )} */}
     </nav>
   );
 };

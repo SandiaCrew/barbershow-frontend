@@ -6,7 +6,7 @@ const HomeNavbar = () => (
     <Link className="link-button link-button--home" to="/scan-qr">Scan QR</Link>
     <Link className="link-button link-button--home" to="/clients/new-client">Add new client</Link>
     <Link className="link-button link-button--home" to="/clients">Clients</Link>
-    <Link className="link-button link-button--home" to="/settings">Settings</Link>
+    {/* <Link className="link-button link-button--home" to="/settings">Settings</Link> */}
   </nav>
 );
 
