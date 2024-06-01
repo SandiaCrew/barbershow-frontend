@@ -33,8 +33,8 @@ const ClientPage = () => {
         <Navbar />
         <div className="container container-body">
           <h1 className="page-title">{client.name}</h1>
-          <ClientDetails client={client} />
           <ClientQR clientId={client._id} clientPhone={client.phone} />
+          <ClientDetails client={client} />
           <VisitList visits={client.visits} />
         </div>
       </div>

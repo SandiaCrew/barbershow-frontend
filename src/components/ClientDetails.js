@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from '../axios';
-import VisitList from '../components/VisitList'; // Import VisitList
-import '../main.css'; // Ensure main.css is imported
+import VisitList from '../components/VisitList';
+import '../main.css';
 
 const ClientDetails = () => {
   const { id } = useParams();
@@ -10,6 +10,7 @@ const ClientDetails = () => {
   const [client, setClient] = useState(null);
 
   useEffect(() => {
+    console.log("Client ID in ClientDetails:", id); // Add this line
     const fetchClient = async () => {
       try {
         const response = await axios.get(`/clients/${id}`);
@@ -48,7 +49,7 @@ const ClientDetails = () => {
         <button className="edit-client" onClick={handleEdit}>Edit</button>
         <button className="delete-client" onClick={handleDelete}>Delete</button>
       </div>
-      <VisitList clientId={id} /> {/* Pass clientId to VisitList */}
+      <VisitList clientId={id} /> {/* Ensure clientId is correctly passed */}
     </div>
   );
 };

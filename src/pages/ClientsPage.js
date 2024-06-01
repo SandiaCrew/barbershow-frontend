@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react'; // Removed useEffect
 import Navbar from '../components/Navbar';
 import SearchBar from '../components/SearchBar';
 import ClientList from '../components/ClientList';
-import axios from 'axios';
+// Removed axios import as it's not used in this component
 
 const ClientsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');

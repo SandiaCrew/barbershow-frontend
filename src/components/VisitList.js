@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../axios';
-import '../main.css'; // Ensure main.css is imported
+import '../main.css';
 
 const VisitList = ({ clientId }) => {
   const [visits, setVisits] = useState([]);
 
   useEffect(() => {
+    console.log("Client ID in VisitList:", clientId);
     const fetchVisits = async () => {
+      if (!clientId) {
+        console.error('Client ID is undefined');
+        return;
+      }
       try {
-        const response = await axios.get(`/api/clients/${clientId}/visits`);
+        console.log("Fetching visits for Client ID:", clientId);
+        const response = await axios.get(`/clients/${clientId}/visits`); // Adjusted URL
         setVisits(response.data);
       } catch (error) {
         console.error('Error fetching visits:', error);
       }
     };
 
-    if (clientId) {
-      fetchVisits();
-    }
+    fetchVisits();
   }, [clientId]);
 
   return (
