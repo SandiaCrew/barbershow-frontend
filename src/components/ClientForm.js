@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 import axios from '../axios';
 import '../main.css';
 
-const ClientForm = ({ initialValues = { name: '', email: '', phone: '' }, onSave, onCancel }) => {
+const ClientForm = ({ initialValues, onSave, onCancel }) => {
   const [formValues, setFormValues] = useState(initialValues);
 
   useEffect(() => {
+    console.log('Initial values changed:', initialValues);
     setFormValues(initialValues);
   }, [initialValues]);
 
   const handleChange = (e) => {
+    console.log('Input change:', e.target.name, e.target.value); // Debugging line
     setFormValues({
       ...formValues,
       [e.target.name]: e.target.value,
@@ -18,12 +20,14 @@ const ClientForm = ({ initialValues = { name: '', email: '', phone: '' }, onSave
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Submitting form with values:', formValues);
     if (onSave) {
       onSave(formValues);
     } else {
       try {
-        await axios.post('/clients', formValues);
-        setFormValues({ name: '', email: '', phone: '' });
+        const response = await axios.post('/clients', formValues);
+        console.log('Client added:', response.data);
+        setFormValues({ name: '', email: '', phone: '' }); // Reset form after successful submission
       } catch (error) {
         console.error('Error creating client:', error);
       }
