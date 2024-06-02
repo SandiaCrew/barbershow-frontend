@@ -25,7 +25,7 @@ const ClientQR = ({ clientId, clientPhone }) => {
           await navigator.share({
             files: [file],
             title: 'Client QR Code',
-            text: `Scan this QR code to view client details: ${clientId}`,
+            text: `Show this QR code to log your visit to Barber Show: ${clientId}`,
           });
         } else {
           console.error('Sharing not supported');
@@ -39,7 +39,7 @@ const ClientQR = ({ clientId, clientPhone }) => {
 
   return (
     <div className="client-qr" ref={qrRef}>
-      <QRCode value={`https://yourapp.com/client/${clientId}`} size={512} />
+      <QRCode value={`https://barbershow.netlify.app/clients/${clientId}`} size={512} />
       <button className="whatsapp" onClick={handleWhatsAppShare}>
         Send QR
       </button>
